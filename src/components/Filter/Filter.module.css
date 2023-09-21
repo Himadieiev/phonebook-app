@@ -1,0 +1,44 @@
+.filter {
+  margin-top: 15px;
+}
+
+@media screen and (min-width: 767px) {
+  .filter {
+    margin-top: 18px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .filter {
+    margin-top: 20px;
+  }
+}
+
+.label {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.input {
+  width: 280px;
+  height: 30px;
+  margin-top: 3px;
+  border: 2px solid #595858;
+  border-radius: 5px;
+  padding: 2px 5px;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 767px) {
+  .input {
+    width: 300px;
+    height: 32px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .input {
+    width: 310px;
+    height: 35px;
+  }
+}

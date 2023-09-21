@@ -1,0 +1,45 @@
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.welcome {
+  margin-right: 7px;
+}
+
+@media screen and (max-width: 767px) {
+  .welcome {
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .welcome {
+    margin-right: 15px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .welcome {
+    margin-right: 20px;
+  }
+}
+
+.name {
+  color: black;
+}
+
+@media screen and (max-width: 767px) {
+  .button {
+    font-size: 7px !important;
+    padding: 5px !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .button {
+    font-size: 10px !important;
+  }
+}
