@@ -10,27 +10,35 @@ const Header = () => {
 
   return (
     <header className={css.header}>
-      <nav className={css.navigation}>
-        <NavLink to="/" className={css.link}>
-          Home
-        </NavLink>
-        {isLoggedIn && (
-          <NavLink to="/contacts" className={`${css.link} ${css.linkContacts}`}>
-            Contacts
+      <div className={css.container}>
+        <nav className={css.navigation}>
+          <NavLink to="/" className={css.link}>
+            Home
           </NavLink>
-        )}
-        {!isLoggedIn && (
-          <div className={css.rightLinks}>
-            <NavLink to="/register" className={css.link}>
-              Sign Up
+          {isLoggedIn && (
+            <NavLink
+              to="/contacts"
+              className={`${css.link} ${css.linkContacts}`}
+            >
+              Contacts
             </NavLink>
-            <NavLink to="/login" className={`${css.link} ${css.linkLogin}`}>
-              Log In
-            </NavLink>
-          </div>
-        )}
-        {isLoggedIn && <UserMenu className={css.user} />}
-      </nav>
+          )}
+          {!isLoggedIn && (
+            <div className={css.rightLinks}>
+              <NavLink
+                to="/register"
+                className={`${css.link} ${css.linkSignUp}`}
+              >
+                Sign Up
+              </NavLink>
+              <NavLink to="/login" className={`${css.link} ${css.linkLogin}`}>
+                Log In
+              </NavLink>
+            </div>
+          )}
+          {isLoggedIn && <UserMenu className={css.user} />}
+        </nav>
+      </div>
     </header>
   );
 };
