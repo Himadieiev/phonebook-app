@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import DeleteIcon from '@mui/icons-material/Delete';
+
 import css from './ElementContacts.module.css';
 
 export function ElementContacts({ contacts, onDeleteContact }) {

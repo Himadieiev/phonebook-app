@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import css from './Home.module.css';
-import authSelectors from 'redux/Auth/selectors';
 import { useSpring, animated, config } from '@react-spring/web';
 import { useNavigate } from 'react-router';
+
+import css from './Home.module.css';
+import authSelectors from 'redux/Auth/selectors';
 
 const Home = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

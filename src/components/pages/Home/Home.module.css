@@ -134,7 +134,14 @@
   color: white;
   font-family: 20px;
   font-weight: 500;
+  font-size: 12px;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .btn {
+    font-size: 20px;
+  }
 }
 
 .btn:hover {

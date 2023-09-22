@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { authInitialState } from './initialState';
 import {
   currentUserThunk,

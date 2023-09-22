@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
@@ -15,8 +16,10 @@ export const getRegister = async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
     token.set(data.token);
+    toast.success('Successfully sigh up');
     return data;
   } catch (e) {
+    toast.warning('Something wrong, try again');
     throw e.message;
   }
 };
@@ -25,8 +28,10 @@ export const getLogin = async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
     token.set(data.token);
+    toast.success('Successfully log in');
     return data;
   } catch (e) {
+    toast.warning('Something wrong, try again');
     throw e.message;
   }
 };
@@ -35,7 +40,9 @@ export const getLogout = async () => {
   try {
     await axios.post('/users/logout');
     token.unset();
+    toast.success('Successfully log out');
   } catch (e) {
+    toast.warning('Something wrong, try again');
     throw e.message;
   }
 };

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { registerThunk } from 'redux/Auth/thunks';
+
 import css from './SignUp.module.css';
+import { registerThunk } from 'redux/Auth/thunks';
 
 export default function SignUp() {
   const dispatch = useDispatch();

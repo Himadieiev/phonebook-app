@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { lazy, useEffect } from 'react';
+
 import { currentUserThunk } from 'redux/Auth/thunks';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import PublicRoute from './PublicRoute/PublicRoute';
@@ -59,7 +60,7 @@ export default function App() {
         </Routes>
         <ToastContainer
           autoClose={2500}
-          position="top-center"
+          position="top-right"
           theme="colored"
           closeOnClick
         />

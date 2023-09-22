@@ -1,4 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+
 import { contactInitialState } from './initialState';
 import {
   createContactsThunk,

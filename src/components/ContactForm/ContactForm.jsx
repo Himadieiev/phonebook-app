@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
+
 import css from './ContactForm.module.css';
 import { createContactsThunk } from 'redux/Contacts/thunks';
 
@@ -32,12 +33,12 @@ export default function ContactForm() {
       const element = contacts[i];
 
       if (element.name === name) {
-        toast.info(`${name} is already in contacts.`);
+        toast.error(`${name} is already in contacts.`);
         return;
       }
 
       if (element.number === number) {
-        toast.info(`${number} is already in contacts.`);
+        toast.error(`${number} is already in contacts.`);
         return;
       }
     }

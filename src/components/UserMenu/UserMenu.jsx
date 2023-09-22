@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import css from './UserMenu.module.css';
 import { Button } from '@mui/material';
+
+import css from './UserMenu.module.css';
 import authSelectors from 'redux/Auth/selectors';
 import { logoutThunk } from 'redux/Auth/thunks';
 
