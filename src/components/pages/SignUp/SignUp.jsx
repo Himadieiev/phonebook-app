@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import css from './SignUp.module.css';
 import { registerThunk } from 'redux/Auth/thunks';
 
 export default function SignUp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,12 +28,24 @@ export default function SignUp() {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     dispatch(registerThunk({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
+
+    try {
+      await dispatch(registerThunk({ name, email, password }));
+
+      navigate('/');
+
+      setName('');
+      setEmail('');
+      setPassword('');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
@@ -65,12 +81,7 @@ export default function SignUp() {
           onChange={handleChange}
           className={css.input}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          className={css.button}
-        >
+        <Button type="submit" variant="contained" color="primary" className={css.button}>
           Sign Up
         </Button>
       </form>

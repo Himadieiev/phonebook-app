@@ -17,9 +17,7 @@ const LogIn = lazy(() => import('./pages/LogIn/LogIn'));
 
 export default function App() {
   const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(
-    authSelectors.getFetchingCurrentUser
-  );
+  const isFetchingCurrentUser = useSelector(authSelectors.getFetchingCurrentUser);
 
   useEffect(() => {
     dispatch(currentUserThunk());
@@ -58,12 +56,7 @@ export default function App() {
           </Route>
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
-        <ToastContainer
-          autoClose={2500}
-          position="top-right"
-          theme="colored"
-          closeOnClick
-        />
+        <ToastContainer autoClose={1500} position="top-right" theme="colored" closeOnClick />
       </>
     )
   );

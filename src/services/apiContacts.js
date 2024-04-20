@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://phonebook-api-1mx7.onrender.com';
 
 export const getContacts = async () => {
   try {
-    const response = await axios.get('/contacts');
+    const response = await axios.get('/api/contacts');
     return response.data;
   } catch (e) {
     toast.warning('Something wrong, try again');
@@ -15,7 +15,7 @@ export const getContacts = async () => {
 
 export const createContacts = async newData => {
   try {
-    const response = await axios.post('/contacts', newData);
+    const response = await axios.post('/api/contacts', newData);
     toast.success('Successfully added contact');
     return response.data;
   } catch (e) {
@@ -26,7 +26,7 @@ export const createContacts = async newData => {
 
 export const deleteContacts = async contactId => {
   try {
-    const response = await axios.delete(`/contacts/${contactId}`);
+    const response = await axios.delete(`/api/contacts/${contactId}`);
     toast.success('Successfully deleted contact');
     return response.data;
   } catch (e) {

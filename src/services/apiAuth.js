@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://phonebook-api-1mx7.onrender.com';
 
 const token = {
   set(token) {
@@ -14,7 +14,7 @@ const token = {
 
 export const getRegister = async credentials => {
   try {
-    const { data } = await axios.post('/users/signup', credentials);
+    const { data } = await axios.post('/api/auth/register', credentials);
     token.set(data.token);
     toast.success('Successfully sigh up');
     return data;
@@ -26,7 +26,7 @@ export const getRegister = async credentials => {
 
 export const getLogin = async credentials => {
   try {
-    const { data } = await axios.post('/users/login', credentials);
+    const { data } = await axios.post('/api/auth/login', credentials);
     token.set(data.token);
     toast.success('Successfully log in');
     return data;
@@ -38,7 +38,7 @@ export const getLogin = async credentials => {
 
 export const getLogout = async () => {
   try {
-    await axios.post('/users/logout');
+    await axios.post('/api/auth/logout');
     token.unset();
     toast.success('Successfully log out');
   } catch (e) {
@@ -58,7 +58,7 @@ export const getCurrentUser = async (_, thunkAPI) => {
   token.set(persistedToken);
 
   try {
-    const { data } = await axios.get('/users/current');
+    const { data } = await axios.get('/api/users/current');
     return data;
   } catch (e) {
     throw e.message;

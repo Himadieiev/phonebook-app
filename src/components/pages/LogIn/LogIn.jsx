@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { loginThunk } from 'redux/Auth/thunks';
 
 import css from './LogIn.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function LogIn() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,11 +25,19 @@ export default function LogIn() {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    dispatch(loginThunk({ email, password }));
-    setEmail('');
-    setPassword('');
+
+    try {
+      await dispatch(loginThunk({ email, password }));
+
+      navigate('/');
+
+      setEmail('');
+      setPassword('');
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
   };
 
   return (
@@ -51,12 +63,7 @@ export default function LogIn() {
           onChange={handleChange}
           className={css.input}
         />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          className={css.button}
-        >
+        <Button type="submit" variant="contained" color="primary" className={css.button}>
           Log In
         </Button>
       </form>
