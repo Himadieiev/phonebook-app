@@ -28,8 +28,12 @@ export function ContactList() {
   };
 
   useEffect(() => {
+    if (contacts.length === 0) {
+      return;
+    }
+
     dispatch(getContactsThunk());
-  }, [dispatch]);
+  }, [contacts.length, dispatch]);
 
   return (
     <>
