@@ -22,9 +22,9 @@ export function ContactList() {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector(getStateContacts);
 
-  const handleDeleteContact = contactId => {
-    dispatch(deleteContactThunk(contactId));
-    dispatch(getContactsThunk());
+  const handleDeleteContact = async contactId => {
+    await dispatch(deleteContactThunk(contactId));
+    await dispatch(getContactsThunk());
   };
 
   useEffect(() => {
