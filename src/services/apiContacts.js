@@ -13,7 +13,7 @@ export const getContacts = async () => {
   }
 };
 
-export const createContacts = async newData => {
+export const createContact = async newData => {
   try {
     const response = await axios.post('/api/contacts', newData);
     toast.success('Successfully added contact');
@@ -24,7 +24,7 @@ export const createContacts = async newData => {
   }
 };
 
-export const deleteContacts = async contactId => {
+export const deleteContact = async contactId => {
   try {
     const response = await axios.delete(`/api/contacts/${contactId}`);
     toast.success('Successfully deleted contact');

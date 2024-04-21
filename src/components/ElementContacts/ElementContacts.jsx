@@ -3,16 +3,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import css from './ElementContacts.module.css';
 
-export function ElementContacts({ contacts, onDeleteContact }) {
+export function ElementContacts({ contact, onDeleteContact }) {
   return (
     <p className={css.element}>
-      <span className={css.name}>{contacts.name}</span>
-      <span className={css.tel}>{contacts.number}</span>
-      <button
-        type="button"
-        className={css.btnDelete}
-        onClick={() => onDeleteContact(contacts.id)}
-      >
+      <span className={css.name}>{contact.name}</span>
+      <span className={css.tel}>{contact.number}</span>
+      <button type="button" className={css.btnDelete} onClick={() => onDeleteContact(contact._id)}>
         <DeleteIcon className={css.icon} />
       </button>
     </p>
@@ -20,8 +16,8 @@ export function ElementContacts({ contacts, onDeleteContact }) {
 }
 
 ElementContacts.propTypes = {
-  contacts: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+  contact: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
   }).isRequired,

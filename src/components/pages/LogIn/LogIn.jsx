@@ -31,7 +31,9 @@ export default function LogIn() {
     try {
       await dispatch(loginThunk({ email, password }));
 
-      navigate('/');
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
 
       setEmail('');
       setPassword('');

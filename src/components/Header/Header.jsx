@@ -17,19 +17,13 @@ const Header = () => {
             Home
           </NavLink>
           {isLoggedIn && (
-            <NavLink
-              to="/contacts"
-              className={`${css.link} ${css.linkContacts}`}
-            >
+            <NavLink to="/contacts" className={`${css.link} ${css.linkContacts}`}>
               Contacts
             </NavLink>
           )}
           {!isLoggedIn && (
             <div className={css.rightLinks}>
-              <NavLink
-                to="/register"
-                className={`${css.link} ${css.linkSignUp}`}
-              >
+              <NavLink to="/register" className={`${css.link} ${css.linkSignUp}`}>
                 Sign Up
               </NavLink>
               <NavLink to="/login" className={`${css.link} ${css.linkLogin}`}>

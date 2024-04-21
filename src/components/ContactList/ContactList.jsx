@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import css from './ContactList.module.css';
 import { ElementContacts } from 'components/ElementContacts/ElementContacts';
 import { getStateContacts } from 'redux/Contacts/selectors';
-import { deleteContactsThunk, getContactsThunk } from 'redux/Contacts/thunks';
+import { deleteContactThunk, getContactsThunk } from 'redux/Contacts/thunks';
 import Loader from 'components/Loader/Loader';
 
 export function ContactList() {
@@ -15,9 +14,7 @@ export function ContactList() {
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLocaleLowerCase();
 
-    return contacts.filter(contact =>
-      contact.name.toLocaleLowerCase().includes(normalizedFilter)
-    );
+    return contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilter));
   };
 
   const filteredContacts = getFilteredContacts();
@@ -26,7 +23,8 @@ export function ContactList() {
   const { isLoading, error } = useSelector(getStateContacts);
 
   const handleDeleteContact = contactId => {
-    dispatch(deleteContactsThunk(contactId));
+    dispatch(deleteContactThunk(contactId));
+    dispatch(getContactsThunk());
   };
 
   useEffect(() => {
@@ -40,11 +38,8 @@ export function ContactList() {
       {!isLoading && (
         <ul className={css.list}>
           {filteredContacts.map(item => (
-            <li key={item.id}>
-              <ElementContacts
-                contacts={item}
-                onDeleteContact={handleDeleteContact}
-              />
+            <li key={item._id}>
+              <ElementContacts contact={item} onDeleteContact={handleDeleteContact} />
             </li>
           ))}
         </ul>
@@ -52,11 +47,3 @@ export function ContactList() {
     </>
   );
 }
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    })
-  ),
-};

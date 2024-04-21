@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import css from './ContactForm.module.css';
-import { createContactsThunk } from 'redux/Contacts/thunks';
+import { createContactThunk } from 'redux/Contacts/thunks';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -42,7 +42,7 @@ export default function ContactForm() {
         return;
       }
     }
-    dispatch(createContactsThunk({ name, number }));
+    dispatch(createContactThunk({ name, number }));
     resetForm();
   };
 
@@ -82,12 +82,7 @@ export default function ContactForm() {
           placeholder="Enter phone number"
         />
       </label>
-      <Button
-        type="submit"
-        variant="contained"
-        color="primary"
-        className={css.button}
-      >
+      <Button type="submit" variant="contained" color="primary" className={css.button}>
         Add Contact
       </Button>
     </form>
