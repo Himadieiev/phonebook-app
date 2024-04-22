@@ -10,11 +10,12 @@
   display: block;
   font-size: 15px;
   font-weight: 600;
+  color: white;
 }
 
 .input {
   margin-top: 3px;
-  border: 2px solid #595858;
+  border: 2px solid white;
   border-radius: 5px;
   padding: 2px 5px;
   width: 280px;

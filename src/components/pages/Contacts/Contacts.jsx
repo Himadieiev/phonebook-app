@@ -5,12 +5,12 @@ import { ContactList } from 'components/ContactList/ContactList';
 
 export default function Contacts() {
   return (
-    <div className={css.contacts}>
+    <main className={css.contacts}>
       <h1 className={css.title}>Phonebook</h1>
       <ContactForm />
       <h2 className={css.subtitle}>Contacts</h2>
       <Filter />
       <ContactList />
-    </div>
+    </main>
   );
 }

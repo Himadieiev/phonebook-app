@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -8,16 +8,27 @@ import authSelectors from 'redux/Auth/selectors';
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const location = useLocation();
 
   return (
     <header className={css.header}>
       <div className={css.container}>
         <nav className={css.navigation}>
-          <NavLink to="/" className={css.link}>
+          <NavLink
+            to="/"
+            className={location.pathname === '/' ? `${css.link} ${css.activeLink}` : css.link}
+          >
             Home
           </NavLink>
           {isLoggedIn && (
-            <NavLink to="/contacts" className={`${css.link} ${css.linkContacts}`}>
+            <NavLink
+              to="/contacts"
+              className={
+                location.pathname === '/contacts'
+                  ? `${css.link} ${css.linkContacts} ${css.activeLink}`
+                  : `${css.link} ${css.linkContacts}`
+              }
+            >
               Contacts
             </NavLink>
           )}

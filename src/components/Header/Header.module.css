@@ -9,28 +9,28 @@
   align-items: center;
   justify-content: center;
   padding: 10px 10px;
-  font-weight: 700;
-  color: blue;
+  font-weight: 500;
 }
 
 @media screen and (min-width: 768px) {
   .navigation {
     font-size: 16px;
-    padding: 20px 100px;
+    padding: 15px 100px;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .navigation {
     font-size: 18px;
-    padding: 35px 300px;
+    padding: 20px 300px;
   }
 }
 
 .link {
-  text-decoration: none;
-  color: blue;
+  color: white;
   font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s linear;
 }
 
 @media screen and (min-width: 768px) {
@@ -40,11 +40,11 @@
 }
 
 .link:active {
-  color: black;
+  color: grey;
 }
 
 .link:hover {
-  color: black;
+  color: grey;
 }
 
 .linkContacts {
@@ -84,23 +84,25 @@
 }
 
 .header {
-  border-bottom: 2px solid rgb(124, 124, 210);
-  background-color: rgba(247, 246, 235, 0.5);
+  border-bottom: 2px solid white;
+  background-color: black;
 }
 
 .linkSignUp,
 .linkLogin {
-  border-radius: 5px;
   background-color: black;
   padding: 5px 10px;
   color: white;
-  font-size: 15px;
+  font-size: 13px;
+  border-radius: 5px;
+  border: 1px solid white;
 }
 
 @media screen and (min-width: 768px) {
   .linkLogin,
   .linkSignUp {
     padding: 10px 20px;
+    font-size: 15px;
   }
 }
 
@@ -110,4 +112,8 @@
 .linkLogin:focus {
   background-color: blue;
   color: white;
+}
+
+.activeLink {
+  text-decoration: underline;
 }

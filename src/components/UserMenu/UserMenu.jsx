@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 // import { useSelector } from 'react-redux';
-import { Button } from '@mui/material';
 
 import css from './UserMenu.module.css';
 // import authSelectors from 'redux/Auth/selectors';
@@ -15,15 +14,9 @@ const UserMenu = () => {
       <p className={css.welcome}>
         Welcome, <span className={css.name}>{/* {user.name} */}Guest</span>
       </p>
-      <Button
-        type="button"
-        variant="contained"
-        color="primary"
-        className={css.button}
-        onClick={() => dispatch(logoutThunk())}
-      >
+      <button type="button" className={css.button} onClick={() => dispatch(logoutThunk())}>
         Log Out
-      </Button>
+      </button>
     </div>
   );
 };
