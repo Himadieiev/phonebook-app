@@ -28,10 +28,6 @@ export function ContactList() {
   };
 
   useEffect(() => {
-    if (contacts.length === 0) {
-      return;
-    }
-
     dispatch(getContactsThunk());
   }, [contacts.length, dispatch]);
 
@@ -39,15 +35,18 @@ export function ContactList() {
     <>
       {isLoading && <Loader />}
       {error && <b>{error}</b>}
-      {!isLoading && (
-        <ul className={css.list}>
-          {filteredContacts.map(item => (
-            <li key={item._id}>
-              <ElementContacts contact={item} onDeleteContact={handleDeleteContact} />
-            </li>
-          ))}
-        </ul>
-      )}
+      {!isLoading &&
+        (filteredContacts.length > 0 ? (
+          <ul className={css.list}>
+            {filteredContacts.map(item => (
+              <li key={item._id}>
+                <ElementContacts contact={item} onDeleteContact={handleDeleteContact} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className={css.text}>No contacts...</p>
+        ))}
     </>
   );
 }

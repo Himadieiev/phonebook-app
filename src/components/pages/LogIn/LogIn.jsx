@@ -43,7 +43,8 @@ export default function LogIn() {
   };
 
   return (
-    <div className={css.container}>
+    <main className={css.container}>
+      <h1 className={css.title}>Sign In</h1>
       <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
         <TextField
           id="outlined-email-input"
@@ -69,6 +70,6 @@ export default function LogIn() {
           Log In
         </Button>
       </form>
-    </div>
+    </main>
   );
 }

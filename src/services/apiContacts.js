@@ -8,8 +8,12 @@ export const getContacts = async () => {
     const response = await axios.get('/api/contacts');
     return response.data;
   } catch (e) {
-    toast.warning('Something wrong, try again');
-    throw e.message;
+    if (e.response && e.response.status === 404) {
+      return [];
+    } else {
+      toast.error('Something wrong, try again');
+      throw e.message;
+    }
   }
 };
 

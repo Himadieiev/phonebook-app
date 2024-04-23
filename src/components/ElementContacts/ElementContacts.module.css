@@ -58,6 +58,6 @@
 }
 
 .icon {
-  fill: grey;
+  fill: rgb(177, 176, 176) !important;
   cursor: pointer;
 }
