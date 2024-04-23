@@ -2,11 +2,11 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { lazy, useEffect } from 'react';
+import { useEffect } from 'react';
+import { lazy } from 'react';
 
 import { currentUserThunk } from 'redux/Auth/thunks';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import PublicRoute from './PublicRoute/PublicRoute';
 import Layout from './Layout/Layout';
 import authSelectors from 'redux/Auth/selectors';
 
@@ -29,30 +29,11 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute>
-                  <Contacts />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PublicRoute>
-                  <SignUp />
-                </PublicRoute>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <PublicRoute>
-                  <LogIn />
-                </PublicRoute>
-              }
-            />
+            <Route path="/register" element={<SignUp />} />
+            <Route path="/login" element={<LogIn />} />
+            <Route path="" element={<PrivateRoute />}>
+              <Route path="/contacts" element={<Contacts />} />
+            </Route>
           </Route>
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
