@@ -30,7 +30,7 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route
-              path="contacts"
+              path="/contacts"
               element={
                 <PrivateRoute>
                   <Contacts />
@@ -38,7 +38,7 @@ export default function App() {
               }
             />
             <Route
-              path="register"
+              path="/register"
               element={
                 <PublicRoute>
                   <SignUp />
@@ -46,7 +46,7 @@ export default function App() {
               }
             />
             <Route
-              path="login"
+              path="/login"
               element={
                 <PublicRoute>
                   <LogIn />
@@ -56,7 +56,7 @@ export default function App() {
           </Route>
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
-        <ToastContainer autoClose={1500} position="top-right" theme="colored" closeOnClick />
+        <ToastContainer autoClose={1000} position="top-right" theme="colored" closeOnClick />
       </>
     )
   );
