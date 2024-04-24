@@ -1,24 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { authInitialState } from './initialState';
-import {
-  currentUserThunk,
-  loginThunk,
-  logoutThunk,
-  registerThunk,
-} from './thunks';
+import { currentUserThunk, loginThunk, logoutThunk, registerThunk } from './thunks';
 
 export const authSlice = createSlice({
   name: 'auth',
   initialState: authInitialState,
   extraReducers: {
     [registerThunk.fulfilled](state, action) {
-      state.user = action.payload.user;
+      state.user = action.payload;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
     [loginThunk.fulfilled](state, action) {
-      state.user = action.payload.user;
+      console.log(action);
+      state.user = action.payload;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
