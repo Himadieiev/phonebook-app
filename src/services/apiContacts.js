@@ -2,6 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://phonebook-api-1mx7.onrender.com';
+// axios.defaults.baseURL = 'http://localhost:5000';  // для тестування серверу в режимі розробки
 
 export const getContacts = async () => {
   try {

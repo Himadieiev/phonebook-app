@@ -30,7 +30,7 @@ export default function SignUp() {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    dispatch(registerThunk({ name, email, password }));
+
     setName('');
     setEmail('');
     setPassword('');
