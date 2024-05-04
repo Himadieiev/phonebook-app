@@ -1,9 +1,15 @@
 .container {
-  height: 100vh;
-  padding-top: 100px;
-  padding-bottom: 30px;
+  padding-top: 30px;
+  height: calc(100vh - 141px);
   text-align: center;
   background-color: black;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-top: 60px;
+    height: calc(100vh - 203px);
+  }
 }
 
 .title {

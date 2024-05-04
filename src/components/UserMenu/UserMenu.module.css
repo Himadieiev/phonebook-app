@@ -8,18 +8,19 @@
 .welcome {
   margin-right: 7px;
   color: white;
+  font-size: 12px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 499px) {
   .welcome {
-    width: 100px;
+    max-width: 70px;
   }
 }
 
 @media screen and (min-width: 768px) {
   .welcome {
     margin-right: 15px;
-    font-size: 25px;
+    font-size: 20px;
   }
 }
 

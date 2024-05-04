@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 
 import Header from 'components/Header/Header';
+import Footer from 'components/Footer/Footer';
 
 const Layout = () => {
   return (
@@ -11,6 +12,7 @@ const Layout = () => {
       <Suspense fallback={<p>Loadind...</p>}>
         <Outlet />
       </Suspense>
+      <Footer />
     </>
   );
 };

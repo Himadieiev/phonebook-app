@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -10,7 +9,24 @@ const Home = () => {
 
   return (
     <main className={css.container}>
-      <p className={css.textHome}>This is your personal Phonebook</p>
+      <h1 className={css.title}>
+        {isLoggedIn ? 'Welcome to your personal Phonebook!' : 'This is your personal Phonebook'}
+      </h1>
+
+      {!isLoggedIn && (
+        <p className={css.infoText}>
+          Thank you for choosing our service. Please note that during the initial authorization
+          process, there might be a slight delay as our free server occasionally takes a bit longer
+          to process requests. We appreciate your patience and understanding.
+        </p>
+      )}
+
+      <p className={css.infoText}>
+        {isLoggedIn
+          ? "Click the 'GET STARTED' button below to begin accessing your contacts. Thank you!"
+          : "Click 'GET STARTED' button below to proceed to the Login or Registration page. Thank you!"}
+      </p>
+
       {!isLoggedIn && (
         <Link className={css.btn} to={'/login'}>
           GET STARTED
@@ -22,18 +38,6 @@ const Home = () => {
           GET STARTED
         </Link>
       )}
-
-      <div className={css.bottomText}>
-        <span>Developed by </span>
-        <a
-          href="https://github.com/Himadieiev"
-          target="_blank"
-          rel="noreferrer"
-          className={css.bottomLink}
-        >
-          Himadieiev Ruslan
-        </a>
-      </div>
     </main>
   );
 };

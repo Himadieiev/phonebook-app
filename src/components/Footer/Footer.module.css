@@ -1,0 +1,28 @@
+.footer {
+  padding: 20px 0;
+  border-top: 2px solid white;
+  background-color: black;
+}
+
+@media screen and (min-width: 768px) {
+  .footer {
+    padding: 30px 0;
+  }
+}
+
+.text {
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    font-size: 15px;
+  }
+}
+
+.link {
+  color: blue;
+}
