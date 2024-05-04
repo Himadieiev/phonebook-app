@@ -18,9 +18,9 @@
 
 @media screen and (min-width: 1200px) {
   .container {
-    height: 100%;
-    padding-top: 100px;
-    padding-bottom: 70px;
+    height: auto;
+    padding-top: 120px;
+    padding-bottom: 120px;
   }
 }
 
