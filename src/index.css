@@ -2,16 +2,14 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 h1,
@@ -21,4 +19,24 @@ ul,
 li {
   margin: 0;
   padding: 0;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 12px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+    height: auto !important;
+  }
+}
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  font-size: 10px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+    font-size: 1rem !important;
+  }
 }

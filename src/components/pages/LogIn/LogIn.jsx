@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+
 import { loginThunk } from 'redux/Auth/thunks';
 
 import css from './LogIn.module.css';
-import { useNavigate } from 'react-router-dom';
 
 export default function LogIn() {
   const dispatch = useDispatch();
