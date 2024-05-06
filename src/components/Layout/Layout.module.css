@@ -1,0 +1,15 @@
+.loadingWrapper {
+  height: calc(100vh - 111px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: black;
+}
+
+@media screen and (min-width: 768px) {
+  .loadingWrapper {
+    height: calc(100vh - 144px);
+  }
+}
