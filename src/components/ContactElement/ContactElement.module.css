@@ -1,15 +1,18 @@
 .element {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-top: 5px;
   margin-left: auto;
   margin-right: auto;
+  padding: 2px 5px;
   width: 280px;
   height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: 2px solid white;
   border-radius: 5px;
-  padding: 2px 5px;
+
   color: white;
 }
 
@@ -28,9 +31,10 @@
 }
 
 .name {
+  margin-right: auto;
+
   font-size: 13px;
   font-weight: 600;
-  margin-right: auto;
 }
 
 @media screen and (min-width: 768px) {
@@ -41,6 +45,7 @@
 
 .tel {
   margin-left: auto;
+
   font-size: 15px;
 }
 
@@ -51,10 +56,11 @@
 }
 
 .btnDelete {
-  background-color: inherit;
-  border-width: 0;
   padding: 0;
   margin-top: auto;
+
+  background-color: inherit;
+  border-width: 0;
 }
 
 .icon {

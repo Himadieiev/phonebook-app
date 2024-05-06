@@ -1,7 +1,9 @@
 .container {
   padding-top: 30px;
   height: calc(100vh - 141px);
+
   text-align: center;
+
   background-color: black;
 }
 
@@ -14,9 +16,11 @@
 
 .title {
   margin-bottom: 10px;
+
   font-size: 25px;
-  color: rgb(177, 176, 176);
   text-decoration: underline;
+
+  color: rgb(177, 176, 176);
 }
 
 @media screen and (min-width: 768px) {
@@ -36,10 +40,12 @@
   margin-right: auto;
   width: min-content;
   padding: 40px 10px 20px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   border: 2px solid white;
   border-radius: 5px;
   background-color: white;
@@ -65,12 +71,14 @@
 .button {
   margin-top: 10px !important;
   height: 30px;
+
   font-size: 12px;
 }
 
 @media screen and (min-width: 768px) {
   .button {
     height: 35px;
+
     font-size: 14px;
   }
 }

@@ -1,5 +1,6 @@
 .footer {
   padding: 20px 0;
+
   border-top: 2px solid white;
   background-color: black;
 }
@@ -13,8 +14,9 @@
 .text {
   font-size: 12px;
   font-weight: 500;
-  color: white;
   text-align: center;
+
+  color: white;
 }
 
 @media screen and (min-width: 768px) {

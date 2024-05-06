@@ -1,10 +1,10 @@
 import { NavLink, useLocation } from 'react-router-dom';
-import React from 'react';
 import { useSelector } from 'react-redux';
 
-import css from './Header.module.css';
 import UserMenu from 'components/UserMenu/UserMenu';
 import authSelectors from 'redux/Auth/selectors';
+
+import css from './Header.module.css';
 
 const Header = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);

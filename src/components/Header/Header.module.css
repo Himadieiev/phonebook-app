@@ -1,5 +1,6 @@
 .header {
   height: 52px;
+
   border-bottom: 2px solid white;
   background-color: black;
 }
@@ -29,10 +30,12 @@
 }
 
 .navigation {
+  padding: 10px 10px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 10px;
+
   font-weight: 500;
 }
 
@@ -49,8 +52,9 @@
 }
 
 .link {
-  color: white;
   font-size: 16px;
+
+  color: white;
   text-decoration: none;
   transition: all 0.3s linear;
 }
@@ -107,10 +111,12 @@
 
 .linkSignUp,
 .linkLogin {
-  background-color: black;
   padding: 5px 10px;
-  color: white;
+
   font-size: 13px;
+
+  background-color: black;
+  color: white;
   border-radius: 5px;
   border: 1px solid white;
 }
@@ -119,6 +125,7 @@
   .linkLogin,
   .linkSignUp {
     padding: 10px 20px;
+
     font-size: 15px;
   }
 }

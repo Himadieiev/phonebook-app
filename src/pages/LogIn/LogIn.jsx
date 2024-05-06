@@ -1,24 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import css from './SignUp.module.css';
-import { registerThunk } from 'redux/Auth/thunks';
+import { loginThunk } from 'redux/Auth/thunks';
 
-export default function SignUp() {
+import css from './LogIn.module.css';
+
+const LogIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case 'name':
-        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -31,16 +29,13 @@ export default function SignUp() {
   const handleSubmit = async e => {
     e.preventDefault();
 
-    setName('');
-    setEmail('');
-    setPassword('');
-
     try {
-      await dispatch(registerThunk({ name, email, password }));
+      await dispatch(loginThunk({ email, password }));
 
-      navigate('/');
+      setTimeout(() => {
+        navigate('/');
+      }, 1000);
 
-      setName('');
       setEmail('');
       setPassword('');
     } catch (err) {
@@ -50,18 +45,8 @@ export default function SignUp() {
 
   return (
     <main className={css.container}>
-      <h1 className={css.title}>Sign Up</h1>
+      <h1 className={css.title}>Sign In</h1>
       <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
-        <TextField
-          id="outlined-name-input"
-          label="Name"
-          type="text"
-          name="name"
-          value={name}
-          autoComplete="current-name"
-          onChange={handleChange}
-          className={css.input}
-        />
         <TextField
           id="outlined-email-input"
           label="Email"
@@ -83,9 +68,11 @@ export default function SignUp() {
           className={css.input}
         />
         <Button type="submit" variant="contained" color="primary" className={css.button}>
-          Sign Up
+          Log In
         </Button>
       </form>
     </main>
   );
-}
+};
+
+export default LogIn;

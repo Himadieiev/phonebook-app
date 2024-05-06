@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import css from './Home.module.css';
 import authSelectors from 'redux/Auth/selectors';
+
+import css from './Home.module.css';
 
 const Home = () => {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -23,7 +24,7 @@ const Home = () => {
 
       <p className={css.infoText}>
         {isLoggedIn
-          ? "Click the 'GET STARTED' button below to begin accessing your contacts. Thank you!"
+          ? "Click 'GET STARTED' button below to begin accessing your contacts. Thank you!"
           : "Click 'GET STARTED' button below to proceed to the Login or Registration page. Thank you!"}
       </p>
 

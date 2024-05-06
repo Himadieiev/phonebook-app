@@ -1,9 +1,10 @@
-import css from './Contacts.module.css';
 import ContactForm from 'components/ContactForm/ContactForm';
-import { Filter } from 'components/Filter/Filter';
-import { ContactList } from 'components/ContactList/ContactList';
+import Filter from 'components/Filter/Filter';
+import ContactList from 'components/ContactList/ContactList';
 
-export default function Contacts() {
+import css from './Contacts.module.css';
+
+const Contacts = () => {
   return (
     <main className={css.contacts}>
       <h1 className={css.title}>Phonebook</h1>
@@ -13,4 +14,6 @@ export default function Contacts() {
       <ContactList />
     </main>
   );
-}
+};
+
+export default Contacts;

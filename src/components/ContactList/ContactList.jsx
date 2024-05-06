@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
-import css from './ContactList.module.css';
-import { ElementContacts } from 'components/ElementContacts/ElementContacts';
+import ContactElement from 'components/ContactElement/ContactElement';
+import Loader from 'components/Loader/Loader';
 import { getStateContacts } from 'redux/Contacts/selectors';
 import { deleteContactThunk, getContactsThunk } from 'redux/Contacts/thunks';
-import Loader from 'components/Loader/Loader';
 
-export function ContactList() {
+import css from './ContactList.module.css';
+
+const ContactList = () => {
   const filter = useSelector(state => state.filter.value);
   const contacts = useSelector(state => state.contacts.items);
 
@@ -40,7 +41,7 @@ export function ContactList() {
           <ul className={css.list}>
             {filteredContacts.map(item => (
               <li key={item._id}>
-                <ElementContacts contact={item} onDeleteContact={handleDeleteContact} />
+                <ContactElement contact={item} onDeleteContact={handleDeleteContact} />
               </li>
             ))}
           </ul>
@@ -49,4 +50,6 @@ export function ContactList() {
         ))}
     </>
   );
-}
+};
+
+export default ContactList;

@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import { toast } from 'react-toastify';
 
-import css from './ContactForm.module.css';
 import { createContactThunk } from 'redux/Contacts/thunks';
 
-export default function ContactForm() {
+import css from './ContactForm.module.css';
+
+const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumder] = useState('');
   const contacts = useSelector(state => state.contacts.items);
@@ -87,4 +88,6 @@ export default function ContactForm() {
       </Button>
     </form>
   );
-}
+};
+
+export default ContactForm;

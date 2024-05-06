@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import css from './ElementContacts.module.css';
+import css from './ContactElement.module.css';
 
-export function ElementContacts({ contact, onDeleteContact }) {
+const ContactElement = ({ contact, onDeleteContact }) => {
   return (
     <p className={css.element}>
       <span className={css.name}>{contact.name}</span>
@@ -13,9 +13,9 @@ export function ElementContacts({ contact, onDeleteContact }) {
       </button>
     </p>
   );
-}
+};
 
-ElementContacts.propTypes = {
+ContactElement.propTypes = {
   contact: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -23,3 +23,5 @@ ElementContacts.propTypes = {
   }).isRequired,
   onDeleteContact: PropTypes.func.isRequired,
 };
+
+export default ContactElement;

@@ -1,22 +1,25 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { TextField, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { loginThunk } from 'redux/Auth/thunks';
+import { registerThunk } from 'redux/Auth/thunks';
 
-import css from './LogIn.module.css';
+import css from './SignUp.module.css';
 
-export default function LogIn() {
+const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
+      case 'name':
+        return setName(value);
       case 'email':
         return setEmail(value);
       case 'password':
@@ -29,13 +32,16 @@ export default function LogIn() {
   const handleSubmit = async e => {
     e.preventDefault();
 
+    setName('');
+    setEmail('');
+    setPassword('');
+
     try {
-      await dispatch(loginThunk({ email, password }));
+      await dispatch(registerThunk({ name, email, password }));
 
-      setTimeout(() => {
-        navigate('/');
-      }, 1000);
+      navigate('/');
 
+      setName('');
       setEmail('');
       setPassword('');
     } catch (err) {
@@ -45,8 +51,18 @@ export default function LogIn() {
 
   return (
     <main className={css.container}>
-      <h1 className={css.title}>Sign In</h1>
+      <h1 className={css.title}>Sign Up</h1>
       <form onSubmit={handleSubmit} autoComplete="off" className={css.form}>
+        <TextField
+          id="outlined-name-input"
+          label="Name"
+          type="text"
+          name="name"
+          value={name}
+          autoComplete="current-name"
+          onChange={handleChange}
+          className={css.input}
+        />
         <TextField
           id="outlined-email-input"
           label="Email"
@@ -68,9 +84,11 @@ export default function LogIn() {
           className={css.input}
         />
         <Button type="submit" variant="contained" color="primary" className={css.button}>
-          Log In
+          Sign Up
         </Button>
       </form>
     </main>
   );
-}
+};
+
+export default SignUp;
