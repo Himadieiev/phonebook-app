@@ -1,143 +1,177 @@
 .header {
-  height: 52px;
-
-  border-bottom: 2px solid white;
-  background-color: black;
-}
-
-@media screen and (min-width: 768px) {
-  .header {
-    height: 60px;
-  }
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .container {
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 700px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .container {
-    max-width: 800px;
-  }
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .navigation {
-  padding: 10px 10px;
-
+  height: 70px;
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  font-weight: 500;
+  justify-content: space-between;
+  gap: 32px;
 }
 
-@media screen and (min-width: 768px) {
-  .navigation {
-    font-size: 16px;
-  }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: var(--transition-base);
 }
 
-@media screen and (min-width: 1200px) {
-  .navigation {
-    font-size: 18px;
-  }
+.logo:hover {
+  opacity: 0.7;
+}
+
+.logoIcon {
+  font-size: 28px;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logoText {
+  font-size: 20px;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+  justify-content: center;
 }
 
 .link {
-  font-size: 16px;
-
-  color: white;
+  color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.3s linear;
-}
-
-@media screen and (min-width: 768px) {
-  .link {
-    font-size: 25px;
-  }
-}
-
-.link:active {
-  color: grey;
+  font-size: 16px;
+  font-weight: 500;
+  transition: var(--transition-base);
+  padding: 8px 4px;
+  position: relative;
 }
 
 .link:hover {
-  color: grey;
-}
-
-.linkContacts {
-  margin-left: 7px;
-}
-
-@media screen and (min-width: 768px) {
-  .linkContacts {
-    margin-left: 15px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .linkContacts {
-    margin-left: 20px;
-  }
-}
-
-.linkLogin {
-  margin-left: 20px;
-}
-
-@media screen and (min-width: 768px) {
-  .linkLogin {
-    margin-left: 15px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .linkLogin {
-    margin-left: 20px;
-  }
-}
-
-.rightLinks {
-  margin-left: auto;
-}
-
-.linkSignUp,
-.linkLogin {
-  padding: 5px 10px;
-
-  font-size: 13px;
-
-  background-color: black;
-  color: white;
-  border-radius: 5px;
-  border: 1px solid white;
-}
-
-@media screen and (min-width: 768px) {
-  .linkLogin,
-  .linkSignUp {
-    padding: 10px 20px;
-
-    font-size: 15px;
-  }
-}
-
-.linkSignUp:hover,
-.linkLogin:hover,
-.linkSignUp:focus,
-.linkLogin:focus {
-  background-color: blue;
-  color: white;
+  opacity: 0.7;
 }
 
 .activeLink {
-  text-decoration: underline;
+  color: var(--text-primary);
+}
+
+.activeLink::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+}
+
+.auth {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.authLink {
+  padding: 8px 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.authLink:hover {
+  opacity: 0.7;
+}
+
+.activeAuthLink {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.icon {
+  stroke: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .navigation {
+    height: 60px;
+    gap: 16px;
+  }
+
+  .logoIcon {
+    font-size: 24px;
+  }
+
+  .logoText {
+    font-size: 18px;
+  }
+
+  .links {
+    gap: 24px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+
+  .authLink {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .logoText {
+    display: none;
+  }
+
+  .logoIcon {
+    font-size: 26px;
+  }
+
+  .auth {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .links {
+    gap: 16px;
+  }
+
+  .authLink {
+    padding: 6px 8px;
+  }
 }
