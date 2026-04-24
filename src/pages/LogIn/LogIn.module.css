@@ -1,84 +1,147 @@
 .container {
-  padding-top: 30px;
-  height: calc(100vh - 141px);
-
-  text-align: center;
-
-  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    padding-top: 60px;
-    height: calc(100vh - 203px);
-  }
+.card {
+  max-width: 460px;
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 48px 40px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.iconWrapper svg {
+  stroke: var(--accent-primary);
 }
 
 .title {
-  margin-bottom: 10px;
-
-  font-size: 25px;
-  text-decoration: underline;
-
-  color: rgb(177, 176, 176);
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-primary);
+  margin-bottom: 8px;
 }
 
-@media screen and (min-width: 768px) {
-  .title {
-    font-size: 30px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .title {
-    font-size: 35px;
-  }
+.subtitle {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 14px;
+  margin-bottom: 32px;
 }
 
 .form {
-  margin-left: auto;
-  margin-right: auto;
-  width: min-content;
-  padding: 40px 10px 20px;
-
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-
-  border: 2px solid white;
-  border-radius: 5px;
-  background-color: white;
+  gap: 20px;
 }
 
 .input {
-  width: 280px !important;
-  margin-bottom: 20px !important;
+  width: 100%;
 }
 
-@media screen and (min-width: 768px) {
-  .input {
-    width: 320px !important;
-  }
+.input :global(.MuiOutlinedInput-root) {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
 }
 
-@media screen and (min-width: 1200px) {
-  .input {
-    width: 350px !important;
-  }
+.input :global(.MuiOutlinedInput-root fieldset) {
+  border-color: var(--border-color);
+}
+
+.input :global(.MuiOutlinedInput-root:hover fieldset) {
+  border-color: var(--accent-primary);
+}
+
+.input :global(.MuiOutlinedInput-root.Mui-focused fieldset) {
+  border-color: var(--accent-primary);
+}
+
+.input :global(.MuiInputLabel-root) {
+  color: var(--text-tertiary);
+}
+
+.input :global(.MuiInputLabel-root.Mui-focused) {
+  color: var(--accent-primary);
+}
+
+.input :global(.MuiOutlinedInput-input) {
+  color: var(--text-primary);
 }
 
 .button {
-  margin-top: 10px !important;
-  height: 30px;
-
-  font-size: 12px;
+  margin-top: 8px !important;
+  padding: 12px !important;
+  background: var(--accent-gradient) !important;
+  border-radius: var(--radius-md) !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  text-transform: none !important;
+  transition: var(--transition-base) !important;
 }
 
-@media screen and (min-width: 768px) {
-  .button {
-    height: 35px;
+.button:hover {
+  opacity: 0.8 !important;
+  box-shadow: var(--shadow-glow);
+}
 
-    font-size: 14px;
+.footer {
+  text-align: center;
+  margin-top: 24px;
+  color: var(--text-tertiary);
+  font-size: 14px;
+}
+
+.link {
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: var(--transition-base);
+}
+
+.link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 32px 16px;
+  }
+
+  .card {
+    padding: 32px 24px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .button {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 24px 20px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 13px;
   }
 }
