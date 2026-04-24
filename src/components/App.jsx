@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { currentUserThunk } from 'redux/Auth/thunks';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Layout from './Layout/Layout';
+import ScrollToTop from './ScrollToTop/ScrollToTop';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const Contacts = lazy(() => import('../pages/Contacts/Contacts'));
@@ -22,6 +23,7 @@ const App = () => {
 
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -33,7 +35,12 @@ const App = () => {
         </Route>
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
-      <ToastContainer autoClose={1000} position="top-right" theme="colored" closeOnClick />
+      <ToastContainer
+        autoClose={1000}
+        position="top-right"
+        theme="colored"
+        closeOnClick
+      />
     </>
   );
 };
