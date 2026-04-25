@@ -11,7 +11,12 @@ const Home = () => {
   return (
     <div className={css.hero}>
       <div className={css.container}>
-        <img src="phonebook-app/hero.png" alt="Hero" width={400} height={218} />
+        <img
+          src={`${process.env.PUBLIC_URL}/hero.png`}
+          alt="Hero"
+          width={400}
+          height={218}
+        />
         <div className={css.badge}>
           <span className={css.badgeText}>
             <span className={css.badgeIcon}>📞</span> Contact Manager
