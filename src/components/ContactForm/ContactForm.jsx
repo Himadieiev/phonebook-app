@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { toast } from 'react-toastify';
 
 import { createContactThunk } from 'redux/Contacts/thunks';
@@ -9,82 +9,131 @@ import css from './ContactForm.module.css';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [number, setNumder] = useState('');
+  const [number, setNumber] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+
   const contacts = useSelector(state => state.contacts.items);
   const dispatch = useDispatch();
 
-  const handleInputChange = e => {
-    const { name, value } = e.currentTarget;
+  const validate = () => {
+    const newErrors = {};
+
+    if (!name.trim()) {
+      newErrors.name = 'Name is required';
+    } else if (name.length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+    } else if (name.length > 50) {
+      newErrors.name = 'Name must be less than 50 characters';
+    } else if (!/^[a-zA-Zа-яА-Я\s\-']+$/.test(name)) {
+      newErrors.name = 'Name contains invalid characters';
+    }
+
+    const cleanNumber = number.replace(/[\s\-()+]/g, '');
+
+    if (!number.trim()) {
+      newErrors.number = 'Number is required';
+    } else if (cleanNumber.length < 7) {
+      newErrors.number = 'Number must be at least 7 digits';
+    } else if (cleanNumber.length > 15) {
+      newErrors.number = 'Number must be less than 15 digits';
+    } else if (!/^[0-9\-+\s()]+$/.test(number)) {
+      newErrors.number = 'Number contains invalid characters';
+    }
+
+    const existingName = contacts.find(contact => contact.name === name);
+    if (existingName) {
+      newErrors.name = `${name} is already in contacts`;
+    }
+
+    const existingNumber = contacts.find(contact => contact.number === number);
+    if (existingNumber) {
+      newErrors.number = `${number} is already in contacts`;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
         setName(value);
+        if (errors.name) setErrors({ ...errors, name: '' });
         break;
       case 'number':
-        setNumder(value);
+        setNumber(value);
+        if (errors.number) setErrors({ ...errors, number: '' });
         break;
       default:
-        return;
+        break;
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
-    for (let i = 0; i < contacts.length; i++) {
-      const element = contacts[i];
+    if (!validate()) return;
 
-      if (element.name === name) {
-        toast.error(`${name} is already in contacts.`);
-        return;
-      }
+    setIsLoading(true);
 
-      if (element.number === number) {
-        toast.error(`${number} is already in contacts.`);
-        return;
-      }
+    try {
+      await dispatch(createContactThunk({ name, number })).unwrap();
+      setName('');
+      setNumber('');
+      toast.success('Contact added successfully');
+    } catch (err) {
+      toast.error(err?.data?.message || 'Failed to add contact');
+    } finally {
+      setIsLoading(false);
     }
-    dispatch(createContactThunk({ name, number }));
-    resetForm();
-  };
-
-  const resetForm = () => {
-    setName('');
-    setNumder('');
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label className={css.label}>
-        Name
-        <br />
+    <form onSubmit={handleSubmit} className={css.form} noValidate>
+      <div className={css.field}>
+        <label htmlFor="name" className={css.label}>
+          Name
+        </label>
         <input
-          className={css.input}
+          id="name"
+          className={`${css.input} ${errors.name ? css.inputError : ''}`}
           type="text"
           value={name}
-          onChange={handleInputChange}
+          onChange={handleChange}
           name="name"
-          pattern="^[a-zA-Zа-яА-Я\s\-']+$"
-          required
           placeholder="Enter name"
         />
-      </label>
-      <label className={css.label}>
-        <br />
-        Number
-        <br />
+        {errors.name && <span className={css.error}>{errors.name}</span>}
+      </div>
+
+      <div className={css.field}>
+        <label htmlFor="number" className={css.label}>
+          Number
+        </label>
         <input
-          className={css.input}
+          id="number"
+          className={`${css.input} ${errors.number ? css.inputError : ''}`}
           type="tel"
           value={number}
-          onChange={handleInputChange}
+          onChange={handleChange}
           name="number"
-          pattern="^[0-9\-]+$"
-          required
           placeholder="Enter phone number"
         />
-      </label>
-      <Button type="submit" variant="contained" color="primary" className={css.button}>
-        Add Contact
+        {errors.number && <span className={css.error}>{errors.number}</span>}
+      </div>
+
+      <Button
+        type="submit"
+        variant="contained"
+        className={css.button}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <CircularProgress size={24} color="inherit" />
+        ) : (
+          'Add Contact'
+        )}
       </Button>
     </form>
   );
