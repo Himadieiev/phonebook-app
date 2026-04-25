@@ -6,13 +6,29 @@ import css from './Contacts.module.css';
 
 const Contacts = () => {
   return (
-    <main className={css.contacts}>
-      <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
-      <h2 className={css.subtitle}>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </main>
+    <div className={css.container}>
+      <div className={css.hero}>
+        <div className={css.badge}>
+          <span className={css.badgeText}>
+            <span className={css.badgeIcon}>📞</span> Your Contacts
+          </span>
+        </div>
+
+        <h1 className={css.title}>
+          Manage your<span className={css.gradient}> Phonebook</span>
+        </h1>
+
+        <p className={css.description}>
+          Add, edit, and organize your contacts in one place
+        </p>
+      </div>
+
+      <div className={css.content}>
+        <ContactForm />
+        <Filter />
+        <ContactList />
+      </div>
+    </div>
   );
 };
 
