@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import ContactElement from 'components/ContactElement/ContactElement';
 import Loader from 'components/Loader/Loader';
@@ -14,8 +15,9 @@ const ContactList = () => {
 
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLocaleLowerCase();
-
-    return contacts.filter(contact => contact.name.toLocaleLowerCase().includes(normalizedFilter));
+    return contacts.filter(contact =>
+      contact.name.toLocaleLowerCase().includes(normalizedFilter)
+    );
   };
 
   const filteredContacts = getFilteredContacts();
@@ -24,31 +26,50 @@ const ContactList = () => {
   const { isLoading, error } = useSelector(getStateContacts);
 
   const handleDeleteContact = async contactId => {
-    await dispatch(deleteContactThunk(contactId));
-    await dispatch(getContactsThunk());
+    try {
+      await dispatch(deleteContactThunk(contactId)).unwrap();
+      toast.success('Contact deleted successfully');
+      await dispatch(getContactsThunk());
+    } catch (err) {
+      toast.error(err?.data?.message || 'Failed to delete contact');
+    }
   };
 
   useEffect(() => {
     dispatch(getContactsThunk());
-  }, [contacts.length, dispatch]);
+  }, [dispatch]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div className={css.error}>{error}</div>;
+  }
+
+  if (filteredContacts.length === 0) {
+    return (
+      <div className={css.empty}>
+        <p className={css.emptyText}>
+          {filter
+            ? 'No matching contacts found'
+            : 'No contacts yet. Add your first contact!'}
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <>
-      {isLoading && <Loader />}
-      {error && <b>{error}</b>}
-      {!isLoading &&
-        (filteredContacts.length > 0 ? (
-          <ul className={css.list}>
-            {filteredContacts.map(item => (
-              <li key={item._id}>
-                <ContactElement contact={item} onDeleteContact={handleDeleteContact} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className={css.text}>No contacts...</p>
-        ))}
-    </>
+    <ul className={css.list}>
+      {filteredContacts.map(item => (
+        <li key={item._id}>
+          <ContactElement
+            contact={item}
+            onDeleteContact={handleDeleteContact}
+          />
+        </li>
+      ))}
+    </ul>
   );
 };
 

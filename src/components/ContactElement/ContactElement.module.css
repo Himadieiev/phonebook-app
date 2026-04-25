@@ -1,69 +1,147 @@
-.element {
-  margin-top: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 2px 5px;
-  width: 280px;
-  height: 30px;
+.card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+}
 
+.avatar {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--accent-gradient);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border: 2px solid white;
-  border-radius: 5px;
-
-  color: white;
 }
 
-@media screen and (min-width: 768px) {
-  .element {
-    width: 300px;
-    height: 32px;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .element {
-    width: 310px;
-    height: 35px;
-  }
-}
-
-.name {
-  margin-right: auto;
-
-  font-size: 13px;
+.initials {
+  color: var(--text-primary);
+  font-size: 16px;
   font-weight: 600;
 }
 
-@media screen and (min-width: 768px) {
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  display: block;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.number {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.deleteBtn {
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.deleteBtn:hover {
+  background: rgba(255, 107, 107, 0.15);
+  border-color: var(--color-error);
+}
+
+.deleteIcon {
+  stroke: var(--color-error);
+  transition: var(--transition-base);
+  width: 16px;
+  height: 16px;
+}
+
+.deleteText {
+  color: var(--color-error);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 10px 12px;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .initials {
+    font-size: 14px;
+  }
+
   .name {
     font-size: 15px;
   }
-}
 
-.tel {
-  margin-left: auto;
+  .number {
+    font-size: 13px;
+  }
 
-  font-size: 15px;
-}
+  .deleteBtn {
+    padding: 6px 12px;
+  }
 
-@media screen and (min-width: 768px) {
-  .tel {
-    font-size: 17px;
+  .deleteText {
+    font-size: 12px;
   }
 }
 
-.btnDelete {
-  padding: 0;
-  margin-top: auto;
+@media (max-width: 480px) {
+  .card {
+    padding: 8px 12px;
+    gap: 10px;
+  }
 
-  background-color: inherit;
-  border-width: 0;
-}
+  .avatar {
+    width: 36px;
+    height: 36px;
+  }
 
-.icon {
-  fill: rgb(177, 176, 176) !important;
-  cursor: pointer;
+  .initials {
+    font-size: 12px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .number {
+    font-size: 12px;
+  }
+
+  .deleteBtn {
+    padding: 4px 10px;
+  }
+
+  .deleteText {
+    display: none;
+  }
+
+  .deleteIcon {
+    width: 18px;
+    height: 18px;
+  }
 }

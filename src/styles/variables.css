@@ -10,6 +10,8 @@
   --text-secondary: #b8b8d4;
   --text-tertiary: #8a8aa3;
 
+  --color-error: #ff6b6b;
+
   --border-color: rgba(108, 99, 255, 0.2);
 
   --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.4);
