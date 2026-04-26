@@ -23,8 +23,8 @@ const ContactForm = () => {
       newErrors.name = 'Name is required';
     } else if (name.length < 2) {
       newErrors.name = 'Name must be at least 2 characters';
-    } else if (name.length > 50) {
-      newErrors.name = 'Name must be less than 50 characters';
+    } else if (name.length > 30) {
+      newErrors.name = 'Name must be less than 30 characters';
     } else if (!/^[a-zA-Zа-яА-Я\s\-']+$/.test(name)) {
       newErrors.name = 'Name contains invalid characters';
     }
@@ -55,6 +55,12 @@ const ContactForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleReset = () => {
+    setName('');
+    setNumber('');
+    setErrors({});
+  };
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
@@ -79,8 +85,7 @@ const ContactForm = () => {
 
     try {
       await dispatch(createContactThunk({ name, number })).unwrap();
-      setName('');
-      setNumber('');
+      handleReset();
       toast.success('Contact added successfully');
     } catch (err) {
       toast.error(err?.data?.message || 'Failed to add contact');
@@ -91,6 +96,19 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className={css.form} noValidate>
+      <div className={css.header}>
+        <h3 className={css.title}>Add New Contact</h3>
+        <Button
+          type="button"
+          variant="outlined"
+          onClick={handleReset}
+          className={css.clearBtn}
+          disabled={isLoading}
+        >
+          Clear
+        </Button>
+      </div>
+
       <div className={css.field}>
         <label htmlFor="name" className={css.label}>
           Name
