@@ -32,3 +32,12 @@ export const deleteContact = async contactId => {
     throw e.message;
   }
 };
+
+export const updateContact = async (contactId, updatedData) => {
+  try {
+    const response = await axios.put(`/api/contacts/${contactId}`, updatedData);
+    return response.data;
+  } catch (e) {
+    throw e.message;
+  }
+};
