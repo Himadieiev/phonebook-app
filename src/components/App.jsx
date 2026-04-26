@@ -47,7 +47,7 @@ const App = () => {
       <ToastContainer
         autoClose={1000}
         position="top-right"
-        theme="colored"
+        theme="dark"
         closeOnClick
       />
     </>
