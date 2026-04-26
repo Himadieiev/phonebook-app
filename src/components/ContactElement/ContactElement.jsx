@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 import css from './ContactElement.module.css';
 
 const ContactElement = ({ contact, onDeleteContact, onEditContact }) => {
@@ -10,6 +12,15 @@ const ContactElement = ({ contact, onDeleteContact, onEditContact }) => {
       .toUpperCase();
   };
 
+  const handleCopyNumber = async () => {
+    try {
+      await navigator.clipboard.writeText(contact.number);
+      toast.success('Phone number copied to clipboard');
+    } catch (err) {
+      toast.error('Failed to copy number');
+    }
+  };
+
   return (
     <div className={css.card}>
       <div className={css.avatar}>
@@ -18,7 +29,29 @@ const ContactElement = ({ contact, onDeleteContact, onEditContact }) => {
 
       <div className={css.info}>
         <span className={css.name}>{contact.name}</span>
-        <span className={css.number}>{contact.number}</span>
+        <div className={css.numberWrapper}>
+          <span className={css.number}>{contact.number}</span>
+          <button
+            type="button"
+            className={css.copyBtn}
+            onClick={handleCopyNumber}
+            aria-label="Copy number"
+          >
+            <svg
+              className={css.copyIcon}
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path
+                d="M5 15H4C2.89543 15 2 14.1046 2 13V4C2 2.89543 2.89543 2 4 2H13C14.1046 2 15 2.89543 15 4V5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div className={css.actions}>

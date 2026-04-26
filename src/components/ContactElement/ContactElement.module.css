@@ -39,10 +39,43 @@
   word-break: break-word;
 }
 
+.numberWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .number {
   display: block;
   color: var(--text-secondary);
   font-size: 14px;
+}
+
+.copyBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-base);
+}
+
+.card:hover .copyBtn {
+  opacity: 1;
+}
+
+.copyIcon {
+  stroke: var(--text-secondary);
+  width: 14px;
+  height: 14px;
+  stroke-width: 2;
+}
+
+.copyBtn:hover .copyIcon {
+  stroke: var(--accent-primary);
 }
 
 .actions {
@@ -185,5 +218,9 @@
   .deleteIcon {
     width: 18px;
     height: 18px;
+  }
+
+  .copyBtn {
+    opacity: 1;
   }
 }
