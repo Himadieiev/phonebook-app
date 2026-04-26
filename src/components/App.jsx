@@ -27,7 +27,11 @@ const App = () => {
   }, [dispatch]);
 
   if (isFetchingCurrentUser) {
-    return <LoadingPage />;
+    return (
+      <div className="fullscreen-center">
+        <LoadingPage />
+      </div>
+    );
   }
 
   return (

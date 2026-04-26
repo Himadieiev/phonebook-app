@@ -10,3 +10,10 @@
   clip: rect(0 0 0 0) !important;
   overflow: hidden !important;
 }
+
+.fullscreen-center {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
