@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
+import EditContactModal from 'components/EditContactModal/EditContactModal';
 import ContactElement from 'components/ContactElement/ContactElement';
 import Loader from 'components/Loader/Loader';
 import { getStateContacts } from 'redux/Contacts/selectors';
@@ -10,6 +11,8 @@ import { deleteContactThunk, getContactsThunk } from 'redux/Contacts/thunks';
 import css from './ContactList.module.css';
 
 const ContactList = () => {
+  const [editingContact, setEditingContact] = useState(null);
+
   const filter = useSelector(state => state.filter.value);
   const contacts = useSelector(state => state.contacts.items);
 
@@ -33,6 +36,14 @@ const ContactList = () => {
     } catch (err) {
       toast.error(err?.data?.message || 'Failed to delete contact');
     }
+  };
+
+  const handleEditContact = contact => {
+    setEditingContact(contact);
+  };
+
+  const handleUpdateComplete = () => {
+    dispatch(getContactsThunk());
   };
 
   useEffect(() => {
@@ -60,16 +71,27 @@ const ContactList = () => {
   }
 
   return (
-    <ul className={css.list}>
-      {filteredContacts.map(item => (
-        <li key={item._id}>
-          <ContactElement
-            contact={item}
-            onDeleteContact={handleDeleteContact}
-          />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className={css.list}>
+        {filteredContacts.map(item => (
+          <li key={item._id}>
+            <ContactElement
+              contact={item}
+              onDeleteContact={handleDeleteContact}
+              onEditContact={handleEditContact}
+            />
+          </li>
+        ))}
+      </ul>
+
+      {editingContact && (
+        <EditContactModal
+          contact={editingContact}
+          onClose={() => setEditingContact(null)}
+          onUpdate={handleUpdateComplete}
+        />
+      )}
+    </>
   );
 };
 
