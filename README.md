@@ -1,31 +1,69 @@
-# PHONEBOOK-APP
+<div align="center">
+  <h1 align="center">Phonebook App</h1>
 
-Phonebook-app is a single-page web application with routing implemented for
-navigation and rendering of the following pages:
+  <div>
+    <img src="https://img.shields.io/badge/-React_JS-black?style=for-the-badge&logoColor=white&logo=react&color=61DAFB" alt="react.js" />
+    <img src="https://img.shields.io/badge/-Redux_Toolkit-black?style=for-the-badge&logoColor=white&logo=redux&color=764ABC" alt="redux" />
+    <img src="https://img.shields.io/badge/-React_Router-black?style=for-the-badge&logoColor=white&logo=reactrouter&color=CA4245" alt="react-router" />
+    <img src="https://img.shields.io/badge/-Material_UI-black?style=for-the-badge&logoColor=white&logo=mui&color=007FFF" alt="material-ui" />
+    <img src="https://img.shields.io/badge/-Axios-black?style=for-the-badge&logoColor=white&logo=axios&color=5A29E4" alt="axios" />
+  </div>
 
-- Home
-- Contacts
-- Login Page
-- Registration Page
+</div>
 
-To start using the application, you need to navigate to either the Registration
-or Login page. There, you will need to enter your credentials, and after that,
-your username will appear in the header, granting you access to your personal
-page with contacts.
+## About
 
-On the Contacts page, you can create and delete your contacts, use filters to
-find specific contacts or groups of contacts.
+Phonebook App is a modern contact management application that allows users to
+securely store, organize, and manage their contacts. With JWT authentication,
+real-time search, and a beautiful Material UI interface, it makes contact
+management simple and efficient.
 
-To log out of the application, simply click the "Log Out" button located in the
-header.
+## Features
 
-The application features responsive design for desktops, tablets, and mobile
-devices. The homepage includes animations powered by a library.
+- **JWT Authentication** — Secure login and registration with token-based auth
+- **Protected Routes** — Private pages accessible only to authenticated users
+- **Persistent Sessions** — Stay logged in with redux-persist
+- **Contact Management** — Create, read, update, and delete contacts
+- **Real-time Search** — Filter contacts by name instantly
+- **Form Validation** — Real-time validation with error feedback
+- **Toast Notifications** — Clear feedback for all user actions
+- **Loading States** — Visual indicators for async operations
+- **Responsive Design** — Works perfectly on all devices
 
-Technologies used in creating this website include:
+## Tech Stack
 
-- HTML
-- СSS
-- JavaScript
-- React
-- Redux
+- **Frontend**: React 18, Redux Toolkit, React Router 6
+- **UI Library**: Material UI (MUI) v5
+- **HTTP Client**: Axios
+- **State Persistence**: redux-persist
+- **Notifications**: React Toastify
+- **Backend**: Node.js, Express, MongoDB (REST API)
+
+## Getting Started
+
+```bash
+# Clone the repository
+git clone https://github.com/Himadieiev/phonebook-app.git
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+## Available Scripts
+
+| Script           | Description                  |
+| ---------------- | ---------------------------- |
+| `npm start`      | Runs app in development mode |
+| `npm run build`  | Builds app for production    |
+| `npm run deploy` | Deploys to GitHub Pages      |
+
+## Live Demo
+
+[https://Himadieiev.github.io/phonebook-app](https://Himadieiev.github.io/phonebook-app)
+
+## License
+
+ISC
