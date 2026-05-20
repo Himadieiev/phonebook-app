@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import EditContactModal from 'components/EditContactModal/EditContactModal';
+import ConfirmDeleteModal from 'components/ConfirmDeleteModal/ConfirmDeleteModal';
 import ContactElement from 'components/ContactElement/ContactElement';
 import Loader from 'components/Loader/Loader';
 import { getStateContacts } from 'redux/Contacts/selectors';
@@ -12,6 +13,7 @@ import css from './ContactList.module.css';
 
 const ContactList = () => {
   const [editingContact, setEditingContact] = useState(null);
+  const [deletingContact, setDeletingContact] = useState(null);
 
   const filter = useSelector(state => state.filter.value);
   const contacts = useSelector(state => state.contacts.items);
@@ -28,11 +30,18 @@ const ContactList = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useSelector(getStateContacts);
 
-  const handleDeleteContact = async contactId => {
+  const handleDeleteClick = contact => {
+    setDeletingContact(contact);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!deletingContact) return;
+
     try {
-      await dispatch(deleteContactThunk(contactId)).unwrap();
+      await dispatch(deleteContactThunk(deletingContact._id)).unwrap();
       toast.success('Contact deleted successfully');
       await dispatch(getContactsThunk());
+      setDeletingContact(null);
     } catch (err) {
       toast.error(err?.data?.message || 'Failed to delete contact');
     }
@@ -77,7 +86,7 @@ const ContactList = () => {
           <li key={item._id}>
             <ContactElement
               contact={item}
-              onDeleteContact={handleDeleteContact}
+              onDeleteContact={handleDeleteClick}
               onEditContact={handleEditContact}
             />
           </li>
@@ -91,6 +100,13 @@ const ContactList = () => {
           onUpdate={handleUpdateComplete}
         />
       )}
+
+      <ConfirmDeleteModal
+        open={!!deletingContact}
+        onClose={() => setDeletingContact(null)}
+        onConfirm={handleConfirmDelete}
+        contactName={deletingContact?.name || ''}
+      />
     </>
   );
 };

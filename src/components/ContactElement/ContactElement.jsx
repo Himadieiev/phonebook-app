@@ -81,7 +81,7 @@ const ContactElement = ({ contact, onDeleteContact, onEditContact }) => {
         <button
           type="button"
           className={css.deleteBtn}
-          onClick={() => onDeleteContact(contact._id)}
+          onClick={() => onDeleteContact(contact)}
           aria-label="Delete contact"
         >
           <svg
